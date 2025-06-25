@@ -3,7 +3,7 @@
 Welcome to my personal developer portfolio!  
 This site showcases my work, skills, and security research.
 
-🌐 **Live Site**: [https://portfolio-su6osec.vercel.app](https://portfolio-su6osec.vercel.app)
+🌐 **Live Site**: [https://portfolio-su6osec.vercel.app](https://su6osec.vercel.app)
 
 ---
 
