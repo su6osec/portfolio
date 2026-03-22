@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    --ring: 192 38 211;
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-canvas-dark text-ink-dark antialiased font-body text-body;
+    overflow-x: clip;
+    background-image:
+      radial-gradient(ellipse 100% 70% at 50% -18%, rgba(88, 28, 135, 0.22), transparent 52%),
+      radial-gradient(ellipse 70% 50% at 100% 0%, rgba(126, 34, 206, 0.12), transparent 45%),
+      radial-gradient(ellipse 55% 40% at 0% 100%, rgba(157, 23, 77, 0.08), transparent 42%);
+  }
+
+  :where(a, button, summary, [role="button"]) {
+    transition-property: color, background-color, border-color, opacity, box-shadow, transform, filter;
+    transition-duration: 220ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(a, button, summary, [role="button"]) {
+      transition-duration: 1ms;
+    }
+  }
+
+  ::selection {
+    @apply bg-fuchsia-500/25 text-ink-dark;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-fuchsia-500/80;
+  }
+}
+
+@layer utilities {
+  .glass-nav {
+    @apply border border-border-dark bg-zinc-950/80 backdrop-blur-nav shadow-glass-dark;
+  }
+
+  .glass-panel {
+    @apply border border-border-dark bg-zinc-950/75 backdrop-blur-panel shadow-glass-dark;
+  }
+
+  .glass-card {
+    @apply border border-border-dark bg-zinc-900/55 backdrop-blur-md;
+  }
+
+  /**
+   * Primary surface for content cards (matches Skills section).
+   * Corner glow + ✦ (::before) — gradients on the card background so in-flow content stays on top.
+   */
+  .section-card {
+    @apply relative rounded-2xl border border-white/[0.08] p-5 shadow-[0_1px_0_rgba(255,255,255,0.04)_inset] ring-1 ring-white/[0.04] backdrop-blur-md transition-[border-color,box-shadow,background-color] duration-300 sm:p-6;
+    background-color: rgba(9, 9, 11, 0.45);
+    background-image:
+      radial-gradient(ellipse 90% 75% at 100% 0%, rgba(168, 85, 247, 0.1) 0%, transparent 58%),
+      radial-gradient(ellipse 70% 60% at 96% 4%, rgba(217, 70, 239, 0.09) 0%, transparent 52%);
+  }
+
+  .section-card::before {
+    content: "\2726";
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 0;
+    pointer-events: none;
+    font-size: 1.125rem;
+    line-height: 1;
+    color: rgba(232, 121, 249, 0.42);
+    text-shadow: 0 0 28px rgba(217, 70, 239, 0.35);
+  }
+
+  .section-card:hover {
+    @apply border-fuchsia-500/25 shadow-[0_20px_48px_-28px_rgba(88,28,135,0.35)];
+    background-color: rgba(9, 9, 11, 0.65);
+    background-image:
+      radial-gradient(ellipse 95% 80% at 100% 0%, rgba(168, 85, 247, 0.16) 0%, transparent 58%),
+      radial-gradient(ellipse 75% 65% at 94% 0%, rgba(217, 70, 239, 0.14) 0%, transparent 52%);
+  }
+
+  /** Featured / in-focus emphasis (projects, timeline focus, etc.) */
+  .section-card.section-card--accent {
+    @apply border-fuchsia-500/30 ring-fuchsia-500/20 shadow-[0_20px_48px_-28px_rgba(88,28,135,0.22)];
+    background-color: rgba(9, 9, 11, 0.52);
+    background-image:
+      radial-gradient(ellipse 95% 82% at 100% 0%, rgba(168, 85, 247, 0.14) 0%, transparent 58%),
+      radial-gradient(ellipse 78% 68% at 95% 2%, rgba(217, 70, 239, 0.12) 0%, transparent 52%);
+  }
+
+  .section-card.section-card--accent:hover {
+    @apply border-fuchsia-400/40 shadow-[0_24px_52px_-26px_rgba(88,28,135,0.4)];
+    background-color: rgba(9, 9, 11, 0.72);
+    background-image:
+      radial-gradient(ellipse 100% 85% at 100% 0%, rgba(168, 85, 247, 0.2) 0%, transparent 58%),
+      radial-gradient(ellipse 82% 72% at 93% 0%, rgba(217, 70, 239, 0.18) 0%, transparent 52%);
+  }
+
+  /** Tighter padding + smaller star for mobile nav rows, etc. */
+  .section-card.section-card--compact {
+    @apply rounded-xl p-3.5 sm:p-4;
+  }
+
+  .section-card.section-card--compact::before {
+    top: 0.625rem;
+    right: 0.625rem;
+    font-size: 1rem;
+  }
+
+  /** @deprecated Prefer `section-card` — kept for any stray references */
+  .bento-tile {
+    @apply section-card;
+  }
+
+  .interactive-lift {
+    @apply transition-[transform,box-shadow,border-color,filter] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform;
+  }
+
+  .interactive-lift:hover {
+    @apply -translate-y-1 shadow-lg shadow-purple-950/40;
+  }
+
+  .interactive-link {
+    @apply transition-[transform,color,background-color,opacity,border-color,box-shadow] duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)];
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-fuchsia-400 via-purple-400 to-amber-500/95 bg-clip-text text-transparent;
+  }
+
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+
+  /**
+   * Page scrollbars: same gradient family as top progress line.
+   * Nav drawer: .scrollbar-themed (see site-header mobile menu).
+   */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(217, 70, 239, 0.85) rgba(24, 24, 27, 0.92);
+  }
+
+  html::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: rgba(24, 24, 27, 0.92);
+    border-radius: 9999px;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background: linear-gradient(180deg, #7c3aed 0%, #d946ef 52%, #fbbf24 100%);
+    box-shadow: 0 0 10px rgba(217, 70, 239, 0.45);
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #8b5cf6 0%, #e879f9 55%, #fcd34d 100%);
+  }
+
+  .scrollbar-themed {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(217, 70, 239, 0.9) rgba(12, 10, 18, 0.65);
+  }
+
+  .scrollbar-themed::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .scrollbar-themed::-webkit-scrollbar-track {
+    background: rgba(12, 10, 18, 0.65);
+    border-radius: 9999px;
+    margin: 6px 0;
+  }
+
+  .scrollbar-themed::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background: linear-gradient(180deg, #7c3aed 0%, #d946ef 50%, #fbbf24 100%);
+    box-shadow: 0 0 8px rgba(217, 70, 239, 0.4);
+  }
+
+  /* Hide scrollbar but keep scroll (mobile nav drawer, modals) */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
