@@ -57,7 +57,7 @@ export function Experience() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid auto-rows-fr gap-5 sm:mt-14 sm:gap-6 md:grid-cols-2">
+        <div className="mt-12 grid gap-5 sm:mt-14 sm:gap-6 md:grid-cols-3">
           {TIMELINE.map((item, i) => {
             const idx = String(i + 1).padStart(2, "0");
             const isCurrent = i === n - 1;
@@ -65,7 +65,7 @@ export function Experience() {
               <Reveal
                 key={`${item.title}-${item.year}`}
                 delay={0.04 * i}
-                className={isCurrent ? "md:col-span-2" : undefined}
+                className={isCurrent ? "md:col-span-3" : undefined}
               >
                 <article
                   className={`section-card group relative flex h-full flex-col overflow-hidden ${

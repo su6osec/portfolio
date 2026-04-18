@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 import { BorderBeam } from "@/components/ui/border-beam";
 
 const metrics = [
-  { label: "Focus", value: "Offensive security", cmd: "echo $FOCUS" },
+  { label: "Focus", value: "Bug bounty · pentest", cmd: "echo $FOCUS" },
   { label: "Stack", value: "Cloud · Linux · Azure", cmd: "cat ./stack.conf" },
-  { label: "Automation", value: "Recon pipelines", cmd: "run recon --status" },
+  { label: "Automation", value: "su6oRecon · tooling", cmd: "run recon --status" },
 ] as const;
 
 const STATIC_ROWS = [
-  { cmd: "whoami", out: "deepanshu · security engineer" },
-  { cmd: "scope --mode", out: "web · api · cloud · automation" },
-  { cmd: "disclosure --policy", out: "coordinated · ethical" },
+  { cmd: "whoami", out: "deepanshu.chauhan · su6osec" },
+  { cmd: "cat ./scope.conf", out: "web · api · cloud · iot" },
+  { cmd: "check --disclosure", out: "coordinated · responsible" },
 ] as const;
 
 const TYPE_MS = 40;

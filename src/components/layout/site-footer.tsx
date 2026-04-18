@@ -15,7 +15,7 @@ export function SiteFooter() {
         <div className="flex w-full flex-col items-center gap-8 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-10 sm:gap-y-4 sm:text-left">
           <p className="whitespace-nowrap text-sm text-muted-dark">
             <span className="font-mono text-[11px] text-muted-dark/80">
-              &copy; 2026
+              &copy; {new Date().getFullYear()}
             </span>
             {" "}
             <span className="font-semibold text-ink-dark">Deepanshu Chauhan</span>

@@ -37,7 +37,7 @@ export async function fetchUserRepos(): Promise<GitHubRepo[]> {
     `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`,
     {
       headers,
-      next: { revalidate: 3600, tags: ["github-repos"] },
+      next: { revalidate: 1800, tags: ["github-repos"] },
     }
   );
 
@@ -85,7 +85,7 @@ export async function fetchGitHubProfile(): Promise<GitHubProfile | null> {
 
   const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`, {
     headers,
-    next: { revalidate: 3600, tags: ["github-profile"] },
+    next: { revalidate: 1800, tags: ["github-profile"] },
   });
 
   if (!res.ok) {

@@ -11,7 +11,7 @@ import { fetchGitHubProfile } from "@/lib/github";
 import { GITHUB_USERNAME } from "@/lib/constants";
 import { fetchMediumPosts } from "@/lib/medium";
 
-export const revalidate = 3600;
+export const revalidate = 1800;
 
 export default async function HomePage() {
   const [profile, mediumPosts] = await Promise.all([
