@@ -3,6 +3,8 @@
 import { HeroPanel } from "@/components/sections/hero-panel";
 import { HeroParticles } from "@/components/sections/hero-particles";
 import { RotatingTypewriter } from "@/components/ui/rotating-typewriter";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
+import { BlurFade } from "@/components/ui/blur-fade";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -70,21 +72,19 @@ export function Hero({ avatarUrl }: { avatarUrl: string }) {
 
         <div className="grid min-w-0 gap-14 lg:grid-cols-2 lg:gap-16">
           <div className="flex min-h-[min(24rem,60vh)] min-w-0 flex-col justify-center lg:min-h-[min(28rem,72vh)]">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <p className="mb-4 font-mono text-overline font-semibold uppercase tracking-[0.24em] text-fuchsia-400/90">
-                su6osec · Portfolio
-              </p>
+            <BlurFade delay={0} duration={0.55}>
+              <AnimatedGradientText className="mb-5 ml-0">
+                <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-fuchsia-600 dark:text-fuchsia-300">
+                  su6osec · Portfolio
+                </span>
+              </AnimatedGradientText>
               <h1
                 id="hero-heading"
-                className="font-heading text-hero font-semibold tracking-tight text-ink-dark"
+                className="font-heading text-hero font-semibold tracking-tight text-slate-900 dark:text-ink-dark"
               >
                 Deepanshu Chauhan
               </h1>
-            </motion.div>
+            </BlurFade>
 
             {stage >= 1 ? (
               <motion.div

@@ -52,20 +52,13 @@ export const CERTIFICATIONS = [
     issuer: "Google / Coursera",
     description:
       "Foundations across security operations, networks, Linux, Python, and incident response with hands-on assessments.",
-    verifyUrl: "https://www.coursera.org/professional-certificates/google-cybersecurity",
+    verifyUrl: "https://coursera.org/share/2adc66ad47ee6aea5abab97d966db6e7",
   },
   {
     title: "Google Cloud Professional Machine Learning Engineer",
-    issuer: "Google Cloud",
+    issuer: "Google Cloud / Credly",
     description:
       "Designing, building, and productionizing ML systems on Google Cloud with reliability and governance in mind.",
-    verifyUrl: "https://cloud.google.com/certification/machine-learning-engineer",
-  },
-  {
-    title: "Offensive Penetration Testing",
-    issuer: "Offensive Security / Accredited Program",
-    description:
-      "Practical penetration testing methodology aligned with real-world engagements and ethical constraints.",
-    verifyUrl: undefined as string | undefined,
+    verifyUrl: "https://www.credly.com/badges/f1f0f588-fe7d-455c-9517-1195e6275dfc/public_url",
   },
 ] as const;

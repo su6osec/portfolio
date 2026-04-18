@@ -2,6 +2,7 @@
 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
+import { BorderBeam } from "@/components/ui/border-beam";
 import { ABOUT_BADGES } from "@/data/site-content";
 
 /** Aligned with skills section — responsive type, professional scale */
@@ -58,7 +59,8 @@ export function About() {
         {/* Top band: focus + ethos — fluid split on large screens */}
         <div className="mt-12 grid gap-5 sm:mt-14 sm:gap-6 lg:grid-cols-12 lg:items-stretch">
           <Reveal delay={0.04} className="min-w-0 lg:col-span-7">
-            <article className={cardShell}>
+            <article className={`${cardShell} overflow-hidden`}>
+              <BorderBeam size={300} duration={14} colorFrom="#a855f7" colorTo="#6366f1" borderWidth={1.2} />
               <p className={overline}>01</p>
               <h3 className={`mt-3 ${categoryTitle}`}>Focus areas</h3>
               <ul className="mt-4 space-y-2.5 border-t border-white/[0.07] pt-4" aria-label="Focus areas">

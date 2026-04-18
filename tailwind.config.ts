@@ -90,11 +90,27 @@ const config: Config = {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-6px)" },
         },
+        /* border-beam — travels along element border */
+        "border-beam": {
+          "100%": { "offset-distance": "100%" },
+        },
+        /* gradient — shifts bg-position for animated gradient text border */
+        gradient: {
+          to: { backgroundPosition: "200% center" },
+        },
+        /* shiny-text — sweeps shimmer highlight across text */
+        "shiny-text": {
+          "0%, 90%, 100%": { backgroundPosition: "calc(-100% - var(--shiny-width)) 0" },
+          "30%, 60%": { backgroundPosition: "calc(100% + var(--shiny-width)) 0" },
+        },
       },
       animation: {
         "grid-drift": "grid-drift 22s linear infinite",
         shimmer: "shimmer 2.4s ease-in-out infinite",
         float: "float 5s ease-in-out infinite",
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+        gradient: "gradient 6s linear infinite",
+        "shiny-text": "shiny-text 8s ease-in-out infinite",
       },
     },
   },

@@ -17,7 +17,7 @@ const body =
 const chip =
   "inline-flex items-center rounded-lg border border-white/[0.09] bg-zinc-950/60 px-2.5 py-1 text-[clamp(0.65rem,0.6rem+0.12vw,0.75rem)] font-semibold uppercase tracking-wider text-ink-dark/90 ring-1 ring-white/[0.04] backdrop-blur-sm";
 const yearPill =
-  "inline-flex items-center rounded-full border border-fuchsia-500/35 bg-gradient-to-r from-fuchsia-500/15 via-purple-500/10 to-violet-600/15 px-3 py-1 font-mono text-[clamp(0.7rem,0.65rem+0.15vw,0.8125rem)] font-bold tabular-nums tracking-wide text-fuchsia-100 shadow-[0_0_20px_-8px_rgba(217,70,239,0.45)]";
+  "inline-flex items-center rounded-full border border-fuchsia-500/35 bg-gradient-to-r from-fuchsia-500/15 via-purple-500/10 to-violet-600/15 px-3 py-1 font-mono text-[clamp(0.7rem,0.65rem+0.15vw,0.8125rem)] font-bold tabular-nums tracking-wide text-fuchsia-700 dark:text-fuchsia-100 shadow-[0_0_20px_-8px_rgba(217,70,239,0.45)]";
 
 export function Experience() {
   const n = TIMELINE.length;
@@ -84,7 +84,7 @@ export function Experience() {
                   </div>
 
                   <h3 className={`relative mt-3 ${title}`}>
-                    <span className="bg-gradient-to-r from-ink-dark via-ink-dark to-fuchsia-200/95 bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-slate-900 via-slate-700 to-fuchsia-700 bg-clip-text text-transparent dark:from-ink-dark dark:via-ink-dark dark:to-fuchsia-200/95">
                       {item.title}
                     </span>
                   </h3>

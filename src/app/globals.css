@@ -5,14 +5,30 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
+    color-scheme: light dark;
     --ring: 192 38 211;
     overflow-x: clip;
   }
 
+  html.dark {
+    color-scheme: dark;
+  }
+
   body {
-    @apply bg-canvas-dark text-ink-dark antialiased font-body text-body;
+    @apply antialiased font-body text-body;
     overflow-x: clip;
+    /* Light mode defaults */
+    background-color: #f4f6fb;
+    color: #0f172a;
+    background-image:
+      radial-gradient(ellipse 100% 70% at 50% -18%, rgba(126, 34, 206, 0.05), transparent 52%),
+      radial-gradient(ellipse 70% 50% at 100% 0%, rgba(88, 28, 135, 0.04), transparent 45%),
+      radial-gradient(ellipse 55% 40% at 0% 100%, rgba(192, 38, 211, 0.03), transparent 42%);
+  }
+
+  .dark body {
+    background-color: #060508;
+    color: #ece8f4;
     background-image:
       radial-gradient(ellipse 100% 70% at 50% -18%, rgba(88, 28, 135, 0.22), transparent 52%),
       radial-gradient(ellipse 70% 50% at 100% 0%, rgba(126, 34, 206, 0.12), transparent 45%),
@@ -199,5 +215,168 @@
     display: none;
     width: 0;
     height: 0;
+  }
+}
+
+/* =====================================================
+   LIGHT MODE OVERRIDES — comprehensive site-wide fixes
+   ===================================================== */
+
+/* ── 1. Text: hardcoded dark-palette classes → visible dark text ── */
+
+html:not(.dark) [class*="text-ink-dark"] {
+  color: #0f172a;
+}
+
+html:not(.dark) [class*="text-muted-dark"] {
+  color: #475569;
+}
+
+/* Fuchsia 100–400 are nearly invisible on white; bump to rich magenta */
+html:not(.dark) [class*="text-fuchsia-1"],
+html:not(.dark) [class*="text-fuchsia-2"],
+html:not(.dark) [class*="text-fuchsia-3"],
+html:not(.dark) [class*="text-fuchsia-4"] {
+  color: #a21caf;
+}
+
+/* Violet / purple light variants */
+html:not(.dark) [class*="text-violet-2"],
+html:not(.dark) [class*="text-violet-3"] {
+  color: #6d28d9;
+}
+
+html:not(.dark) [class*="text-purple-2"],
+html:not(.dark) [class*="text-purple-3"] {
+  color: #7e22ce;
+}
+
+/* ── 2. Backgrounds: zinc-900/950 → light glass surfaces ── */
+
+html:not(.dark) [class*="bg-zinc-95"] {
+  background-color: rgba(241, 245, 249, 0.9);
+}
+
+html:not(.dark) [class*="bg-zinc-90"] {
+  background-color: rgba(248, 250, 252, 0.8);
+}
+
+/* ── 3. Borders: white/transparent on light BG → visible slate ── */
+
+html:not(.dark) [class*="border-white"] {
+  border-color: rgba(15, 23, 42, 0.09);
+}
+
+/* ── 4. Rings: white/transparent → subtle slate ── */
+
+html:not(.dark) [class*="ring-white"] {
+  --tw-ring-color: rgba(15, 23, 42, 0.07);
+}
+
+/* ── 5. Section cards — light glass surfaces ── */
+
+html:not(.dark) .section-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  background-image:
+    radial-gradient(ellipse 90% 75% at 100% 0%, rgba(168, 85, 247, 0.05) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 60% at 96% 4%, rgba(217, 70, 239, 0.03) 0%, transparent 52%);
+  border-color: rgba(15, 23, 42, 0.07);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 4px 20px rgba(15, 23, 42, 0.05);
+  --tw-ring-color: rgba(15, 23, 42, 0.04);
+}
+
+html:not(.dark) .section-card::before {
+  color: rgba(168, 85, 247, 0.28);
+  text-shadow: 0 0 18px rgba(168, 85, 247, 0.18);
+}
+
+html:not(.dark) .section-card:hover {
+  background-color: rgba(255, 255, 255, 0.98);
+  border-color: rgba(168, 85, 247, 0.16);
+  box-shadow: 0 20px 48px -28px rgba(88, 28, 135, 0.09);
+}
+
+html:not(.dark) .section-card.section-card--accent {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(168, 85, 247, 0.18);
+}
+
+html:not(.dark) .section-card.section-card--accent:hover {
+  border-color: rgba(168, 85, 247, 0.28);
+}
+
+/* ── 6. Glass utilities ── */
+
+html:not(.dark) .glass-nav {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(15, 23, 42, 0.07);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.55) inset, 0 8px 32px rgba(15, 23, 42, 0.08);
+}
+
+html:not(.dark) .glass-panel {
+  background-color: rgba(255, 255, 255, 0.78);
+  border-color: rgba(15, 23, 42, 0.07);
+}
+
+html:not(.dark) .glass-card {
+  background-color: rgba(255, 255, 255, 0.65);
+  border-color: rgba(15, 23, 42, 0.07);
+}
+
+/* ── 7. Scrollbar — light mode ── */
+
+html:not(.dark) {
+  scrollbar-color: rgba(139, 92, 246, 0.55) rgba(226, 232, 240, 0.85);
+}
+
+html:not(.dark)::-webkit-scrollbar-track {
+  background: rgba(226, 232, 240, 0.85);
+}
+
+html:not(.dark)::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8b5cf6 0%, #d946ef 52%, #f59e0b 100%);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.25);
+}
+
+html:not(.dark)::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7c3aed 0%, #c026d3 55%, #d97706 100%);
+}
+
+/* ── 8. Selection highlight ── */
+
+html:not(.dark) ::selection {
+  background-color: rgba(168, 85, 247, 0.15);
+  color: #0f172a;
+}
+
+/* =====================================================
+   THEME TOGGLE — VIEW TRANSITION radial reveal
+   ===================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    mix-blend-mode: normal;
+    animation-fill-mode: both;
+  }
+
+  /* New theme expands as a circle from the toggle button */
+  ::view-transition-new(root) {
+    animation: theme-circle-expand 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Old theme stays static beneath the expanding circle */
+  ::view-transition-old(root) {
+    animation: none;
+    z-index: -1;
+  }
+
+  @keyframes theme-circle-expand {
+    from {
+      clip-path: circle(0% at var(--theme-x, 50%) var(--theme-y, 50%));
+    }
+    to {
+      clip-path: circle(150% at var(--theme-x, 50%) var(--theme-y, 50%));
+    }
   }
 }

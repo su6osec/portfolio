@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { ScrollChrome } from "@/components/layout/scroll-chrome";
 import { EasterEgg } from "@/components/ui/easter-egg";
 import { GlobalShortcuts } from "@/components/ui/global-shortcuts";
+import { Providers } from "@/components/providers";
 import { SITE_URL } from "@/lib/constants";
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Outfit } from "next/font/google";
@@ -80,24 +81,26 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`dark ${outfit.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-dvh">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[300] focus:rounded-full focus:bg-fuchsia-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
-        >
-          Skip to content
-        </a>
-        <ScrollChrome />
-        <GlobalShortcuts />
-        <SiteHeader />
-        <main id="main-content" className="relative min-w-0 overflow-x-clip">
-          {children}
-        </main>
-        <SiteFooter />
-        <EasterEgg />
+        <Providers>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[300] focus:rounded-full focus:bg-fuchsia-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+          >
+            Skip to content
+          </a>
+          <ScrollChrome />
+          <GlobalShortcuts />
+          <SiteHeader />
+          <main id="main-content" className="relative min-w-0 overflow-x-clip">
+            {children}
+          </main>
+          <SiteFooter />
+          <EasterEgg />
+        </Providers>
       </body>
     </html>
   );

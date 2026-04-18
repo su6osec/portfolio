@@ -160,16 +160,16 @@ export function BlogSection({ posts }: Props) {
                 <button
                   type="button"
                   onClick={() => setVisible((v) => Math.min(v + BATCH, posts.length))}
-                  className="rounded-full border border-white/10 bg-white/5 px-8 py-3 text-sm font-semibold text-ink-dark shadow-lg shadow-purple-950/20 ring-1 ring-fuchsia-500/20 backdrop-blur-md transition-[transform,background-color,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.02] hover:bg-white/10 hover:ring-fuchsia-500/35 active:scale-[0.98]"
+                  className="rounded-full border border-slate-200/80 bg-white/90 px-8 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-[transform,background-color,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.02] hover:border-fuchsia-400/50 hover:text-fuchsia-700 active:scale-[0.98] dark:border-white/10 dark:bg-white/5 dark:text-ink-dark dark:shadow-purple-950/20 dark:hover:bg-white/10 dark:hover:ring-fuchsia-500/35"
                 >
-                  Load {Math.min(BATCH, posts.length - visible)} more
+                  Show More ({posts.length - shown.length} remaining)
                 </button>
                 <p className="text-xs text-muted-dark">
-                  {shown.length} / {posts.length}
+                  Showing {shown.length} of {posts.length} articles
                 </p>
               </div>
             ) : posts.length > BATCH ? (
-              <p className="mt-8 text-center text-xs text-muted-dark">{posts.length} articles</p>
+              <p className="mt-8 text-center text-xs text-muted-dark">All {posts.length} articles shown</p>
             ) : null}
           </>
         )}

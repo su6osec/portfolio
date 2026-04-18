@@ -6,16 +6,15 @@ import { useEffect, useMemo, useState } from "react";
 import { hrefToSectionId, useActiveSection } from "@/hooks/use-active-section";
 import { CursorFollowEyes } from "@/components/ui/cursor-follow-eyes";
 import { ResumeButton } from "@/components/ui/resume-button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const NAV = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#activity", label: "GitHub" },
   { href: "#achievements", label: "Achievements" },
   { href: "#certifications", label: "Certs" },
-  { href: "#testimonials", label: "Voices" },
   { href: "#writing", label: "Writing" },
   { href: "#contact", label: "Contact" },
 ] as const;
@@ -24,8 +23,8 @@ const MID = Math.ceil(NAV.length / 2);
 
 function navLinkClass(active: boolean) {
   return active
-    ? "bg-fuchsia-500/15 text-fuchsia-300 ring-1 ring-fuchsia-500/30 transition-[color,background-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]"
-    : "text-muted-dark transition-[color,background-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-purple-950/80 hover:text-fuchsia-300";
+    ? "bg-fuchsia-500/15 text-fuchsia-700 ring-1 ring-fuchsia-500/30 transition-[color,background-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] dark:text-fuchsia-300"
+    : "text-slate-500 transition-[color,background-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-violet-100/80 hover:text-fuchsia-700 dark:text-muted-dark dark:hover:bg-purple-950/80 dark:hover:text-fuchsia-300";
 }
 
 function HamburgerIcon({ open }: { open: boolean }) {
@@ -118,7 +117,7 @@ export function SiteHeader() {
       >
         <nav
           aria-label="Primary"
-          className={`relative flex w-full items-center overflow-visible border border-white/[0.07] bg-zinc-950/70 shadow-[0_8px_40px_rgba(0,0,0,0.35)] backdrop-blur-2xl backdrop-saturate-150 ${
+          className={`relative flex w-full items-center overflow-visible border bg-white/85 border-slate-200/60 shadow-[0_8px_40px_rgba(0,0,0,0.06)] backdrop-blur-2xl backdrop-saturate-150 dark:border-white/[0.07] dark:bg-zinc-950/70 dark:shadow-[0_8px_40px_rgba(0,0,0,0.35)] ${
             scrolled ? "rounded-none border-x-0 border-t-0" : "rounded-[1.5rem]"
           }`}
         >
@@ -133,7 +132,7 @@ export function SiteHeader() {
                 href="#hero"
                 aria-label="Home"
                 aria-current={heroActive ? "page" : undefined}
-                className="interactive-link relative z-[25] shrink-0 rounded-full px-2 py-1.5 font-heading text-[clamp(0.78rem,0.65rem+1.35vw,1.35rem)] font-semibold leading-none tracking-tight text-ink-dark transition-[color,opacity,transform] duration-200 ease-out hover:text-ink-dark sm:px-2.5 xl:text-[clamp(1rem,0.85rem+1vw,1.5rem)]"
+                className="interactive-link relative z-[25] shrink-0 rounded-full px-2 py-1.5 font-heading text-[clamp(0.78rem,0.65rem+1.35vw,1.35rem)] font-semibold leading-none tracking-tight text-slate-800 transition-[color,opacity,transform] duration-200 ease-out hover:text-slate-900 dark:text-ink-dark dark:hover:text-ink-dark sm:px-2.5 xl:text-[clamp(1rem,0.85rem+1vw,1.5rem)]"
                 onClick={() => setOpen(false)}
               >
                 <span className="text-gradient">P</span>ortfolio<span className="text-gradient">.</span>
@@ -165,12 +164,16 @@ export function SiteHeader() {
                 </div>
               </div>
 
+              {/* Desktop: ThemeToggle left of Resume */}
+              <ThemeToggle className="relative z-[25] hidden shrink-0 self-center lg:inline-flex" />
               <ResumeButton className="relative z-[25] hidden shrink-0 self-center lg:inline-flex" />
 
-              <div className="relative z-[25] ml-auto flex shrink-0 items-center lg:ml-0">
+              {/* Mobile: ThemeToggle left of hamburger */}
+              <div className="relative z-[25] ml-auto flex shrink-0 items-center gap-1.5 lg:ml-0">
+                <ThemeToggle className="lg:hidden" />
                 <button
                   type="button"
-                  className="relative z-[210] inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-ink-dark backdrop-blur-md transition-[color,background-color,box-shadow,transform] duration-200 ease-out hover:bg-white/10 active:scale-[0.97] lg:hidden"
+                  className="relative z-[210] inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300/70 bg-white/80 text-slate-500 backdrop-blur-md transition-[color,background-color,box-shadow,transform] duration-200 ease-out hover:bg-white active:scale-[0.97] dark:border-white/10 dark:bg-white/5 dark:text-ink-dark dark:hover:bg-white/10 lg:hidden"
                   aria-expanded={open}
                   aria-controls="mobile-menu"
                   onClick={() => setOpen((v) => !v)}
@@ -199,7 +202,7 @@ export function SiteHeader() {
             <button
               type="button"
               aria-label="Close menu overlay"
-              className="absolute inset-0 bg-black/50 backdrop-blur-[3px]"
+              className="absolute inset-0 bg-black/20 backdrop-blur-[3px] dark:bg-black/50"
               onClick={() => setOpen(false)}
             />
             <motion.div
@@ -210,7 +213,7 @@ export function SiteHeader() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 12 }}
               transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 mx-4 mt-3 flex max-h-[min(82dvh,calc(100dvh-5rem))] flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-zinc-950/55 shadow-2xl shadow-black/50 ring-1 ring-white/[0.06] backdrop-blur-2xl"
+              className="relative z-10 mx-4 mt-3 flex max-h-[min(82dvh,calc(100dvh-5rem))] flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white/92 shadow-2xl shadow-black/10 ring-1 ring-slate-900/[0.05] backdrop-blur-2xl dark:border-white/[0.08] dark:bg-zinc-950/55 dark:shadow-black/50 dark:ring-white/[0.06]"
             >
               <nav className="no-scrollbar min-h-0 flex-1 overflow-y-auto px-2 py-2">
                 <ul className="flex flex-col gap-2">
@@ -225,13 +228,13 @@ export function SiteHeader() {
                           aria-current={isActive ? "page" : undefined}
                           className={`section-card section-card--compact relative z-0 flex items-center gap-3 text-[15px] font-medium tracking-tight transition-[color,box-shadow,border-color] ${
                             isActive
-                              ? "border-fuchsia-500/30 text-fuchsia-200 ring-1 ring-fuchsia-500/25"
-                              : "text-ink-dark/95"
+                              ? "border-fuchsia-500/30 text-fuchsia-700 ring-1 ring-fuchsia-500/25 dark:text-fuchsia-200"
+                              : "text-slate-700 dark:text-ink-dark/95"
                           }`}
                           onClick={() => setOpen(false)}
                         >
                           <span
-                            className="relative z-[1] w-8 shrink-0 font-mono text-[clamp(0.625rem,0.58rem+0.12vw,0.75rem)] font-semibold tabular-nums tracking-[0.2em] text-fuchsia-400/85"
+                            className="relative z-[1] w-8 shrink-0 font-mono text-[clamp(0.625rem,0.58rem+0.12vw,0.75rem)] font-semibold tabular-nums tracking-[0.2em] text-fuchsia-500/85 dark:text-fuchsia-400/85"
                             aria-hidden
                           >
                             {num}
@@ -243,7 +246,7 @@ export function SiteHeader() {
                   })}
                 </ul>
               </nav>
-              <div className="shrink-0 border-t border-white/[0.06] p-3">
+              <div className="shrink-0 border-t border-slate-200/70 p-3 dark:border-white/[0.06]">
                 <ResumeButton
                   variant="accent"
                   disableAnimation

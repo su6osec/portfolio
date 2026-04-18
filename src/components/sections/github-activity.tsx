@@ -1,5 +1,6 @@
 import { ContributionHeatmap } from "@/components/sections/github-heatmap";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { GithubStatBox } from "@/components/ui/github-stat-box";
 import { GITHUB_USERNAME, SOCIAL } from "@/lib/constants";
 import { fetchContributionCalendar } from "@/lib/github-contributions";
 import { fetchGitHubProfile } from "@/lib/github";
@@ -54,30 +55,9 @@ export async function GitHubActivitySection() {
 
             {profile ? (
               <dl className="grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
-                <div className="min-w-0 rounded-xl border border-white/[0.08] bg-zinc-950/50 p-2.5 text-center ring-1 ring-white/[0.04] sm:p-3">
-                  <dt className="text-[9px] font-semibold uppercase tracking-wider text-muted-dark sm:text-[10px]">
-                    Repos
-                  </dt>
-                  <dd className="mt-1 font-heading text-lg font-semibold tabular-nums text-ink-dark sm:text-xl">
-                    {profile.public_repos}
-                  </dd>
-                </div>
-                <div className="min-w-0 rounded-xl border border-white/[0.08] bg-zinc-950/50 p-2.5 text-center ring-1 ring-white/[0.04] sm:p-3">
-                  <dt className="text-[9px] font-semibold uppercase tracking-wider text-muted-dark sm:text-[10px]">
-                    Followers
-                  </dt>
-                  <dd className="mt-1 font-heading text-lg font-semibold tabular-nums text-ink-dark sm:text-xl">
-                    {profile.followers}
-                  </dd>
-                </div>
-                <div className="min-w-0 rounded-xl border border-white/[0.08] bg-zinc-950/50 p-2.5 text-center ring-1 ring-white/[0.04] sm:p-3">
-                  <dt className="text-[9px] font-semibold uppercase tracking-wider text-muted-dark sm:text-[10px]">
-                    Following
-                  </dt>
-                  <dd className="mt-1 font-heading text-lg font-semibold tabular-nums text-ink-dark sm:text-xl">
-                    {profile.following}
-                  </dd>
-                </div>
+                <GithubStatBox label="Repos" value={profile.public_repos} />
+                <GithubStatBox label="Followers" value={profile.followers} />
+                <GithubStatBox label="Following" value={profile.following} />
               </dl>
             ) : null}
 

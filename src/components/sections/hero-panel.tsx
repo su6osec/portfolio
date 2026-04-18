@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 const metrics = [
   { label: "Focus", value: "Offensive security", cmd: "echo $FOCUS" },
@@ -67,6 +68,13 @@ export function HeroPanel() {
       transition={{ type: "spring", stiffness: 260, damping: 28 }}
       className="section-card relative min-h-[300px] min-w-0 overflow-hidden p-6 sm:min-h-[320px] sm:p-8"
     >
+      <BorderBeam
+        size={280}
+        duration={10}
+        colorFrom="#c084fc"
+        colorTo="#818cf8"
+        borderWidth={1.5}
+      />
       <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-fuchsia-600/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-purple-900/20 blur-3xl" />
 

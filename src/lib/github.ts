@@ -47,8 +47,9 @@ export async function fetchUserRepos(): Promise<GitHubRepo[]> {
   }
 
   const data = (await res.json()) as Array<GitHubRepo & { topics?: string[] }>;
+  const EXCLUDED = new Set(["su6osec", "portfolio"]);
   const owned = data
-    .filter((r) => !r.fork && !r.archived)
+    .filter((r) => !r.fork && !r.archived && !EXCLUDED.has(r.name.toLowerCase()))
     .map(normalizeRepo);
 
   const score = (name: string) => {
