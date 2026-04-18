@@ -7,7 +7,7 @@ import { BorderBeam } from "@/components/ui/border-beam";
 const metrics = [
   { label: "Focus", value: "Bug bounty · pentest", cmd: "echo $FOCUS" },
   { label: "Stack", value: "Cloud · Linux · Azure", cmd: "cat ./stack.conf" },
-  { label: "Automation", value: "su6oRecon · tooling", cmd: "run recon --status" },
+  { label: "Automation", value: "Recon · tooling", cmd: "run recon --status" },
 ] as const;
 
 const STATIC_ROWS = [

@@ -13,7 +13,7 @@ export type GitHubRepo = {
   archived: boolean;
 };
 
-const FEATURED_ORDER = ["su6oRecon", "keylogger-security-research-tool"];
+const FEATURED_ORDER = ["keylogger-security-research-tool"];
 
 function normalizeRepo(r: GitHubRepo & { topics?: string[] }): GitHubRepo {
   return {
