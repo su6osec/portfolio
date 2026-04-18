@@ -47,6 +47,11 @@ export function NumberTicker({
     <span
       ref={ref}
       className={cn("inline-block tabular-nums tracking-wider", className)}
-    />
+    >
+      {Intl.NumberFormat("en-US", {
+        minimumFractionDigits: decimalPlaces,
+        maximumFractionDigits: decimalPlaces,
+      }).format(direction === "down" ? value : 0)}
+    </span>
   );
 }
