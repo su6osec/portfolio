@@ -33,14 +33,6 @@ export const TIMELINE: TimelineEntry[] = [
       "Competed in community CTF challenges, collaborating on cryptography, web, and forensics-style problems in a conference setting.",
   },
   {
-    title: "Author — su6oRecon",
-    org: "Personal / Open Source",
-    year: "2024–2025",
-    vibe: "Ship",
-    description:
-      "Designed and shipped an automation-first recon framework integrating modern tooling to streamline asset discovery and vulnerability scanning.",
-  },
-  {
     title: "Cloud & Infrastructure Engineer",
     org: "LTIMindtree",
     year: "2026 — Present",

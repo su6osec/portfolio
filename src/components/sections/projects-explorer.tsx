@@ -71,7 +71,7 @@ export function ProjectsExplorer({ repos }: { repos: EnrichedRepo[] }) {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search by name, stack, or keyword…"
-            className="w-full rounded-2xl border border-border-light bg-white/90 px-4 py-3 text-sm text-ink-light outline-none ring-0 transition placeholder:text-muted-light/70 focus:border-accent dark:border-border-dark dark:bg-zinc-950/70 dark:text-ink-dark dark:placeholder:text-muted-dark/70"
+            className="w-full rounded-2xl border-2 border-slate-300 bg-white/90 px-4 py-3 text-sm text-ink-light outline-none ring-0 transition placeholder:text-muted-light/70 focus:border-accent dark:border-zinc-600 dark:bg-zinc-950/70 dark:text-ink-dark dark:placeholder:text-muted-dark/70 dark:focus:border-fuchsia-500"
           />
           <p className="text-xs text-muted-light dark:text-muted-dark">
             Showing {filtered.length} of {repos.length} repositories

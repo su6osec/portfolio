@@ -14,11 +14,14 @@ export function SiteFooter() {
       <div className="relative z-10 mx-auto flex max-w-content flex-col gap-8 px-4 text-center sm:px-6 lg:px-8">
         <div className="flex w-full flex-col items-center gap-8 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-10 sm:gap-y-4 sm:text-left">
           <p className="whitespace-nowrap text-sm text-muted-dark">
-            Crafted with curiosity &amp; care by{" "}
-            <span className="font-semibold text-ink-dark">Deepanshu Chauhan</span>
-            {" "}·{" "}
             <span className="font-mono text-[11px] text-muted-dark/80">
-              &copy; {new Date().getFullYear()} All rights reserved.
+              &copy; 2026
+            </span>
+            {" "}
+            <span className="font-semibold text-ink-dark">Deepanshu Chauhan</span>
+            {" "}
+            <span className="font-mono text-[11px] text-muted-dark/80">
+              · All rights reserved.
             </span>
           </p>
           <FooterSocialBar />

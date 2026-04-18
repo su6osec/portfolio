@@ -20,9 +20,9 @@ export function Hero({ avatarUrl }: { avatarUrl: string }) {
   const [stage, setStage] = useState(0);
 
   useEffect(() => {
-    const t1 = window.setTimeout(() => setStage(1), 420);
-    const t2 = window.setTimeout(() => setStage(2), 2800);
-    const t3 = window.setTimeout(() => setStage(3), 5200);
+    const t1 = window.setTimeout(() => setStage(1), 200);
+    const t2 = window.setTimeout(() => setStage(2), 500);
+    const t3 = window.setTimeout(() => setStage(3), 800);
     return () => {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
@@ -125,9 +125,9 @@ export function Hero({ avatarUrl }: { avatarUrl: string }) {
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                 className="mt-7 max-w-xl text-body text-muted-dark"
               >
-                I focus on practical cybersecurity—structured testing, recon automation, and safe disclosure—paired with
-                reliable cloud and infrastructure operations. Calm systems, clear documentation, and measurable outcomes
-                guide how I work.
+                Practical cybersecurity through structured testing, recon automation, and responsible disclosure —
+                backed by reliable cloud and infrastructure operations. Calm systems, clear documentation, and
+                measurable outcomes define how I work.
               </motion.p>
             ) : (
               <div className="mt-7 min-h-[6rem]" aria-hidden />
