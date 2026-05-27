@@ -16,11 +16,11 @@ export default function Projects() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ flex: '1 1 400px', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}
+          style={{ flex: '1 1 min(100%, 400px)', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
             <div style={{ width: '40px', height: '1px', background: 'var(--color-accent-primary)' }}></div>
-            <span style={{ color: 'var(--color-accent-primary)', fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Subdomain Reconnaissance</span>
+            <span style={{ color: 'var(--color-accent-primary)', fontSize: 'clamp(11px, 2.5vw, 13px)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Subdomain Reconnaissance</span>
           </div>
           <div style={{ overflow: 'hidden', paddingBottom: '10px' }}>
             <motion.h2 
@@ -46,7 +46,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          style={{ flex: '1 1 500px', perspective: '1000px' }}
+          style={{ flex: '1 1 min(100%, 500px)', width: '100%', perspective: '1000px' }}
         >
           <TiltCard>
             <div style={{
@@ -54,7 +54,7 @@ export default function Projects() {
               border: '1px solid rgba(255,255,255,0.08)',
               boxShadow: '0 20px 50px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.1)',
               borderRadius: '24px',
-              padding: 'var(--space-6)',
+              padding: 'clamp(16px, 5vw, 32px)',
               transform: 'translateZ(20px)',
             }}>
               <div style={{ display: 'flex', gap: '8px', marginBottom: 'var(--space-4)' }}>
@@ -62,7 +62,7 @@ export default function Projects() {
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }}></div>
               </div>
-              <div style={{ fontFamily: 'monospace', color: '#a8c7fa', fontSize: '13px', lineHeight: 1.8, whiteSpace: 'pre', overflowX: 'auto', paddingBottom: '8px' }}>
+              <div style={{ fontFamily: 'monospace', color: '#a8c7fa', fontSize: 'clamp(11px, 2.5vw, 13px)', lineHeight: 1.8, whiteSpace: 'pre', overflowX: 'auto', paddingBottom: '8px' }}>
                 <div style={{ color: '#fff' }}>$ graphite -d hackerone.com -w 50 -c 60</div>
                 <div style={{ color: 'var(--color-text-secondary)', marginTop: '8px' }}>[*] Validating [========================] 143/143</div>
                 <div style={{ marginTop: '8px' }}> 1  api.hackerone.com         95   high   ✓   200</div>
@@ -84,7 +84,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          style={{ flex: '1 1 500px', perspective: '1000px' }}
+          style={{ flex: '1 1 min(100%, 500px)', width: '100%', perspective: '1000px' }}
         >
           <TiltCard>
             <div style={{
@@ -92,7 +92,7 @@ export default function Projects() {
               border: '1px solid rgba(255,255,255,0.08)',
               boxShadow: '0 20px 50px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.1)',
               borderRadius: '24px',
-              padding: 'var(--space-6)',
+              padding: 'clamp(16px, 5vw, 32px)',
               transform: 'translateZ(20px)',
             }}>
               <div style={{ display: 'flex', gap: '8px', marginBottom: 'var(--space-4)' }}>
@@ -100,7 +100,7 @@ export default function Projects() {
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }}></div>
               </div>
-              <div style={{ fontFamily: 'monospace', color: '#e5b3fe', fontSize: '13px', lineHeight: 1.8, whiteSpace: 'pre', overflowX: 'auto', paddingBottom: '8px' }}>
+              <div style={{ fontFamily: 'monospace', color: '#e5b3fe', fontSize: 'clamp(11px, 2.5vw, 13px)', lineHeight: 1.8, whiteSpace: 'pre', overflowX: 'auto', paddingBottom: '8px' }}>
                 <div style={{ color: '#fff' }}>$ oscar -h</div>
                 <div style={{ color: 'var(--color-text-secondary)', marginTop: '8px' }}>Omni-Signal Capture & Agentic Recon — v1.0.0</div>
                 <div style={{ marginTop: '8px' }}>  -t &lt;domain&gt;    Target domain (required)</div>
@@ -118,11 +118,11 @@ export default function Projects() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ flex: '1 1 400px', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}
+          style={{ flex: '1 1 min(100%, 400px)', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
             <div style={{ width: '40px', height: '1px', background: 'var(--color-accent-secondary)' }}></div>
-            <span style={{ color: 'var(--color-accent-secondary)', fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Automated Recon & Triage</span>
+            <span style={{ color: 'var(--color-accent-secondary)', fontSize: 'clamp(11px, 2.5vw, 13px)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Automated Recon & Triage</span>
           </div>
           <div style={{ overflow: 'hidden', paddingBottom: '10px' }}>
             <motion.h2 
@@ -153,11 +153,11 @@ export default function Projects() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ flex: '1 1 400px', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}
+          style={{ flex: '1 1 min(100%, 400px)', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
             <div style={{ width: '40px', height: '1px', background: 'var(--color-accent-primary)' }}></div>
-            <span style={{ color: 'var(--color-accent-primary)', fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Security Methodology</span>
+            <span style={{ color: 'var(--color-accent-primary)', fontSize: 'clamp(11px, 2.5vw, 13px)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Security Methodology</span>
           </div>
           <div style={{ overflow: 'hidden', paddingBottom: '10px' }}>
             <motion.h2 
@@ -183,7 +183,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          style={{ flex: '1 1 500px', perspective: '1000px' }}
+          style={{ flex: '1 1 min(100%, 500px)', width: '100%', perspective: '1000px' }}
         >
           <TiltCard>
             <div style={{
@@ -191,7 +191,7 @@ export default function Projects() {
               border: '1px solid rgba(255,255,255,0.08)',
               boxShadow: '0 20px 50px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.1)',
               borderRadius: '24px',
-              padding: 'var(--space-6)',
+              padding: 'clamp(16px, 5vw, 32px)',
               transform: 'translateZ(20px)',
             }}>
               <div style={{ display: 'flex', gap: '8px', marginBottom: 'var(--space-4)' }}>
@@ -199,7 +199,7 @@ export default function Projects() {
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }}></div>
               </div>
-              <div style={{ fontFamily: 'monospace', color: '#a8c7fa', fontSize: '13px', lineHeight: 1.8, whiteSpace: 'pre', overflowX: 'auto', paddingBottom: '8px' }}>
+              <div style={{ fontFamily: 'monospace', color: '#a8c7fa', fontSize: 'clamp(11px, 2.5vw, 13px)', lineHeight: 1.8, whiteSpace: 'pre', overflowX: 'auto', paddingBottom: '8px' }}>
                 <div style={{ color: '#fff' }}>$ tree phases/</div>
                 <div style={{ color: 'var(--color-text-secondary)', marginTop: '8px' }}>phases/</div>
                 <div>├── 01_scope_and_program_analysis.md</div>
