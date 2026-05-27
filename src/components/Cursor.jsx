@@ -51,6 +51,7 @@ export default function Cursor() {
         Uses mix-blend-mode: difference against white to perfectly invert underlying colors.
       */}
       <motion.div
+        className="hide-mobile"
         style={{
           position: 'fixed',
           top: 0,
@@ -83,6 +84,7 @@ export default function Cursor() {
         Disappears when hovering over interactive elements.
       */}
       <motion.div
+        className="hide-mobile"
         style={{
           position: 'fixed',
           top: 0,

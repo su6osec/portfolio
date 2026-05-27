@@ -62,7 +62,7 @@ export default function Projects() {
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }}></div>
               </div>
-              <div style={{ fontFamily: 'monospace', color: '#a8c7fa', fontSize: '13px', lineHeight: 1.8, whiteSpace: 'pre' }}>
+              <div style={{ fontFamily: 'monospace', color: '#a8c7fa', fontSize: '13px', lineHeight: 1.8, whiteSpace: 'pre', overflowX: 'auto', paddingBottom: '8px' }}>
                 <div style={{ color: '#fff' }}>$ graphite -d hackerone.com -w 50 -c 60</div>
                 <div style={{ color: 'var(--color-text-secondary)', marginTop: '8px' }}>[*] Validating [========================] 143/143</div>
                 <div style={{ marginTop: '8px' }}> 1  api.hackerone.com         95   high   ✓   200</div>
@@ -100,7 +100,7 @@ export default function Projects() {
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }}></div>
               </div>
-              <div style={{ fontFamily: 'monospace', color: '#e5b3fe', fontSize: '13px', lineHeight: 1.8, whiteSpace: 'pre' }}>
+              <div style={{ fontFamily: 'monospace', color: '#e5b3fe', fontSize: '13px', lineHeight: 1.8, whiteSpace: 'pre', overflowX: 'auto', paddingBottom: '8px' }}>
                 <div style={{ color: '#fff' }}>$ oscar -h</div>
                 <div style={{ color: 'var(--color-text-secondary)', marginTop: '8px' }}>Omni-Signal Capture & Agentic Recon — v1.0.0</div>
                 <div style={{ marginTop: '8px' }}>  -t &lt;domain&gt;    Target domain (required)</div>
@@ -199,7 +199,7 @@ export default function Projects() {
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }}></div>
               </div>
-              <div style={{ fontFamily: 'monospace', color: '#a8c7fa', fontSize: '13px', lineHeight: 1.8, whiteSpace: 'pre' }}>
+              <div style={{ fontFamily: 'monospace', color: '#a8c7fa', fontSize: '13px', lineHeight: 1.8, whiteSpace: 'pre', overflowX: 'auto', paddingBottom: '8px' }}>
                 <div style={{ color: '#fff' }}>$ tree phases/</div>
                 <div style={{ color: 'var(--color-text-secondary)', marginTop: '8px' }}>phases/</div>
                 <div>├── 01_scope_and_program_analysis.md</div>
