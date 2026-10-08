@@ -19,12 +19,16 @@ export default defineConfig({
   preview: {
     port: 4173,
     strictPort: true,
-    // Vite refuses unknown Host headers by default (DNS-rebinding defence), so
-    // a plain `npm run preview` serves localhost only. Opening the build from
-    // another device — a phone on the LAN, or through a `localhost.run` tunnel
-    // — sends a different Host, which returns 403. Pass extra names explicitly
-    // rather than setting `allowedHosts: true`, which would drop the guard:
-    //   VITE_PREVIEW_HOSTS=abc123.lhr.life npm run preview
+    // Vite refuses unknown Host headers by default (DNS-rebinding defence).
+    // Two cases it never blocks: `localhost`/`*.localhost`, and any raw IP
+    // literal — so a phone reaching this box over the LAN by IP is never a
+    // Host problem (a phone that can't connect at all is the macOS firewall).
+    // What it *does* block is a hostname, which is what a `localhost.run`
+    // tunnel presents. Allow those explicitly rather than setting
+    // `allowedHosts: true`, which drops the guard entirely. A leading dot
+    // matches every subdomain — useful because the tunnel mints a fresh random
+    // hostname each time it reconnects, so allow the domain, not one host:
+    //   VITE_PREVIEW_HOSTS=.lhr.life npm run preview
     allowedHosts: ['localhost', ...(process.env.VITE_PREVIEW_HOSTS?.split(',') ?? [])],
   },
 })
