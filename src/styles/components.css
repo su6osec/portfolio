@@ -1,0 +1,655 @@
+/* ============================================================
+   Components — buttons, cards, chips, headings, media
+   ============================================================ */
+
+/* ---------- Section header -------------------------------- */
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+  z-index: var(--z-raised);
+}
+
+.section + .section {
+  border-top: 1px solid var(--line);
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.section-index {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--signal);
+}
+
+.section-head__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.accent-word { color: var(--signal); }
+
+.section-title {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tighter);
+  line-height: var(--leading-tight);
+  max-width: 18ch;
+}
+
+.section-lead {
+  font-size: var(--text-md);
+  color: var(--text-2);
+  max-width: 62ch;
+  line-height: var(--leading-relaxed);
+}
+
+/* Grid, not flex: a long title ("Disclosed, rewarded, remediated.") pushes the
+   row past the container and flex-wrap silently drops the lead underneath,
+   which breaks the rhythm every other section establishes. The first track
+   absorbs the title, the lead always keeps its own column. */
+.section-head--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 42ch);
+  align-items: end;
+  column-gap: var(--sp-6);
+}
+
+.section-head--split .section-head__main { min-width: 0; }
+
+.section-head--split .section-lead {
+  max-width: none;
+  text-align: right;
+}
+
+@media (max-width: 960px) {
+  .section-head--split { grid-template-columns: minmax(0, 1fr); }
+  .section-head--split .section-lead { text-align: left; }
+}
+
+/* ---------- Buttons --------------------------------------- */
+.btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--text);
+  --btn-border: var(--line-2);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: 0.8rem 1.5rem;
+  min-height: 46px;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: var(--tracking-normal);
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  border-radius: var(--r-full);
+  overflow: hidden;
+  white-space: nowrap;
+  isolation: isolate;
+  transition:
+    transform var(--d-fast) var(--ease-out),
+    background-color var(--d-fast) var(--ease-out),
+    border-color var(--d-fast) var(--ease-out),
+    color var(--d-fast) var(--ease-out),
+    box-shadow var(--d-fast) var(--ease-out);
+}
+
+.btn > * { position: relative; z-index: 1; }
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Primary — solid signal */
+.btn--primary {
+  --btn-bg: var(--signal);
+  --btn-fg: var(--text-invert);
+  --btn-border: var(--signal);
+  box-shadow: 0 8px 26px -12px var(--signal-glow);
+}
+
+.btn--primary:hover {
+  box-shadow: 0 14px 34px -12px var(--signal-glow);
+  background: color-mix(in srgb, var(--signal) 88%, #fff);
+}
+
+/* Ghost — hairline that fills */
+.btn--ghost:hover {
+  --btn-bg: var(--bg-hover);
+  --btn-border: var(--line-3);
+}
+
+/* Solid white / invert */
+.btn--invert {
+  --btn-bg: var(--text);
+  --btn-fg: var(--bg);
+  --btn-border: var(--text);
+}
+
+.btn--invert:hover {
+  box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.6);
+}
+
+.btn--lg {
+  min-height: 56px;
+  padding: 0 2rem;
+  font-size: var(--text-base);
+}
+
+.btn--sm {
+  min-height: 38px;
+  padding: 0 1.1rem;
+  font-size: var(--text-xs);
+}
+
+/* Circular icon button (theme toggle etc.) */
+.btn--icon {
+  width: 42px;
+  height: 42px;
+  min-height: 42px;
+  padding: 0;
+  border-radius: var(--r-full);
+}
+
+/* Label-swap hover: text slides up, duplicate slides in from below */
+/* Rotating label. Both strings stack in one grid cell, so the clip box is
+   as wide as the *wider* of the two — sizing it to the resting string alone
+   let `overflow: hidden` slice the alternate (Resume → "Downloa").
+   The box is also sized to the full line box (1.6em): any shorter and the
+   line overflows downward from its top edge and renders a few pixels below
+   the icon beside it. Labels centre inside the shared box so the extra
+   width reads as padding, not as a lopsided gap after the icon. */
+.btn__swap {
+  display: grid;
+  overflow: hidden;
+  height: 1.6em;
+  line-height: 1.6;
+}
+
+.btn__swap > span {
+  grid-area: 1 / 1;
+  text-align: center;
+  transition: transform var(--d-fast) var(--ease-out);
+}
+
+.btn__swap > span:last-child {
+  transform: translateY(110%);
+}
+
+.btn:hover .btn__swap > span:first-child { transform: translateY(-110%); }
+.btn:hover .btn__swap > span:last-child { transform: translateY(0); }
+
+/* Text link with underline sweep */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text);
+  padding-bottom: 3px;
+  background-image: linear-gradient(var(--signal), var(--signal));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--d-base) var(--ease-out), color var(--d-fast) var(--ease-out);
+}
+
+.link-arrow:hover {
+  color: var(--signal);
+  background-size: 100% 1px;
+}
+
+.link-arrow svg {
+  transition: transform var(--d-fast) var(--ease-out);
+}
+
+.link-arrow:hover svg {
+  transform: translate(3px, -3px);
+}
+
+/* ---------- Glass surface --------------------------------- */
+.glass {
+  position: relative;
+  background: var(--bg-glass);
+  backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+
+/* Border-light: a conic gradient that lights the top edge. */
+.border-light {
+  position: relative;
+}
+
+.border-light::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    140deg,
+    color-mix(in srgb, var(--signal) 40%, transparent),
+    transparent 38%,
+    transparent 62%,
+    color-mix(in srgb, var(--violet) 34%, transparent)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.75;
+  transition: opacity var(--d-base) var(--ease-out);
+}
+
+.border-light:hover::before { opacity: 1; }
+
+/* ---------- Card ------------------------------------------ */
+.card {
+  position: relative;
+  background: linear-gradient(160deg, var(--bg-elev-2), var(--bg-elev));
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform var(--d-base) var(--ease-out),
+    border-color var(--d-base) var(--ease-out),
+    box-shadow var(--d-base) var(--ease-out);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    340px circle at var(--cx, 50%) var(--cy, 0%),
+    color-mix(in srgb, var(--signal) 9%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity var(--d-base) var(--ease-out);
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-2);
+  box-shadow: var(--shadow-md);
+}
+
+.card:hover::after { opacity: 1; }
+
+.card--flat:hover { transform: none; }
+
+/* ---------- Chips / pills --------------------------------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.4rem 0.8rem;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-2);
+  background: var(--bg-glass);
+  border: 1px solid var(--line);
+  border-radius: var(--r-full);
+  white-space: nowrap;
+  transition:
+    background-color var(--d-fast) var(--ease-out),
+    color var(--d-fast) var(--ease-out),
+    border-color var(--d-fast) var(--ease-out),
+    transform var(--d-fast) var(--ease-out);
+}
+
+.chip:hover {
+  color: var(--text);
+  border-color: var(--line-3);
+  background: var(--bg-hover);
+  transform: translateY(-2px);
+}
+
+.chip__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
+.chip--signal {
+  color: var(--signal);
+  background: var(--signal-soft);
+  border-color: color-mix(in srgb, var(--signal) 26%, transparent);
+}
+
+.chip--gold {
+  color: var(--gold);
+  background: var(--gold-soft);
+  border-color: color-mix(in srgb, var(--gold) 28%, transparent);
+}
+
+.chip--violet {
+  color: var(--violet);
+  background: var(--violet-soft);
+  border-color: color-mix(in srgb, var(--violet) 28%, transparent);
+}
+
+.chip--cyan {
+  color: var(--cyan);
+  background: var(--cyan-soft);
+  border-color: color-mix(in srgb, var(--cyan) 28%, transparent);
+}
+
+/* Uppercase mono eyebrow */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* Live status dot */
+.status-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--signal);
+  flex: none;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: inherit;
+  animation: pulse-ring 2.4s var(--ease-out) infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  70%, 100% { transform: scale(3); opacity: 0; }
+}
+
+/* ---------- Section heading media: procedural project art --- */
+.art-frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  isolation: isolate;
+}
+
+.art-frame canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.art-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 45%),
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.14) 0 1px, transparent 1px 3px);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+}
+
+/* Sweeping scan line over project art */
+.art-frame::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40%;
+  top: -40%;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in srgb, var(--signal) 22%, transparent) 55%,
+    transparent
+  );
+  animation: scan 5.5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  to { top: 110%; }
+}
+
+/* ---------- Terminal -------------------------------------- */
+.terminal {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  text-align: left;
+}
+
+.terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.7rem 0.9rem;
+  background: color-mix(in srgb, var(--bg-elev-2) 70%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+
+.terminal__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.terminal__title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--text-3);
+  letter-spacing: var(--tracking-wide);
+}
+
+.terminal__body {
+  padding: clamp(1rem, 3vw, 1.5rem);
+  font-family: var(--font-mono);
+  font-size: clamp(0.75rem, 1.6vw, 0.85rem);
+  line-height: 1.75;
+  color: var(--text-2);
+  min-height: 210px;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+.caret {
+  display: inline-block;
+  color: var(--signal);
+  animation: blink 1.05s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ---------- Marquee --------------------------------------- */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee__track {
+  display: flex;
+  gap: var(--sp-3);
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee--left .marquee__track { animation: marquee-l 46s linear infinite; }
+.marquee--right .marquee__track { animation: marquee-r 52s linear infinite; }
+
+.marquee:hover .marquee__track { animation-play-state: paused; }
+
+@keyframes marquee-l { to { transform: translateX(-50%); } }
+@keyframes marquee-r { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+/* ---------- Toast ----------------------------------------- */
+.toast-stack {
+  position: fixed;
+  bottom: var(--sp-5);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 0.75rem 1.15rem;
+  background: var(--bg-glass-strong);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-full);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  white-space: nowrap;
+}
+
+.toast__icon { color: var(--signal); display: flex; }
+
+/* ---------- Stat ------------------------------------------ */
+.stat__value {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tighter);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-top: var(--sp-2);
+}
+
+/* ---------- Error boundary ------------------------------- */
+/* Shown only when React crashes mid-render. Centred, calm, and
+   still on-brand — a white screen is the one unforgivable bug. */
+.crash {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--sp-4);
+  max-width: 40rem;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 5vw, 3rem) var(--gutter);
+}
+
+.crash__kicker {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--danger);
+}
+
+.crash__kicker::before {
+  content: '';
+  width: 1.75rem;
+  height: 1px;
+  background: var(--danger);
+  opacity: 0.7;
+}
+
+.crash__title {
+  font-family: var(--font-name);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+}
+
+.crash__body {
+  color: var(--text-2);
+  max-width: 46ch;
+  line-height: var(--leading-normal);
+}
+
+.crash__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+}
+
+.crash__contact {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--text-3);
+  margin-top: var(--sp-2);
+  word-break: break-word;
+}
+
+.crash__contact a {
+  color: var(--text-2);
+  text-decoration: none;
+}
+
+.crash__contact a:hover { color: var(--signal); }

@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /og-source.html
+
+# AI crawlers: welcome to read, do not train on the resume file.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://su6osec.vercel.app/sitemap.xml

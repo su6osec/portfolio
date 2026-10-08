@@ -1,0 +1,9 @@
+Contact: mailto:deepanshu.infosec@gmail.com
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: en
+Policy: https://su6osec.vercel.app/#contact
+Acknowledgments: https://github.com/su6osec
+
+# This site is a static portfolio with no user input, no authentication and
+# no user data at rest. The only client-side storage used is two preference
+# keys in localStorage (theme and a cached public repository list).

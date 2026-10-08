@@ -1,0 +1,22 @@
+/* ============================================================
+   Display face — Clash Display (Fontshare, ITF Free Font License)
+   Self-hosted so the hero name renders in one request with no
+   third-party origin, no CSP exception and no FOIT flash.
+   Used only where the brand speaks: the hero name and the logotype.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplay-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

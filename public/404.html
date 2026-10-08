@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>404 — page not found | Deepanshu Chauhan (su6osec)</title>
+    <meta
+      name="description"
+      content="This page does not exist. Head back to the portfolio of Deepanshu Chauhan (su6osec) — Cloud Infrastructure & Offensive Security Engineer."
+    />
+    <!-- A 404 is never a destination: keep it out of the index, but let
+         crawlers follow the links home. -->
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#07080a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Deliberately no Google Fonts round-trip: an error page should render
+         on the first paint, with the system stack as the honest fallback. -->
+    <style>
+      @font-face {
+        font-family: 'Clash Display';
+        src: url('/fonts/ClashDisplay-700.woff2') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      :root {
+        color-scheme: dark;
+        --bg: #07080a;
+        --bg-elev: #0c0e13;
+        --text: #edeff2;
+        --text-2: #9ba3af;
+        --text-3: #6a717d;
+        --line: rgba(255, 255, 255, 0.075);
+        --line-2: rgba(255, 255, 255, 0.14);
+        --signal: #4ff0b4;
+        --outline: rgba(237, 239, 242, 0.36);
+        --font-name: 'Clash Display', 'Space Grotesk', system-ui, sans-serif;
+        --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          color-scheme: light;
+          --bg: #f6f6f3;
+          --bg-elev: #ffffff;
+          --text: #101216;
+          --text-2: #565c66;
+          --text-3: #7b828d;
+          --line: rgba(16, 18, 22, 0.09);
+          --line-2: rgba(16, 18, 22, 0.16);
+          --signal: #12a875;
+          --outline: rgba(16, 18, 22, 0.3);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(1.5rem, 5vw, 3rem);
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      main {
+        width: 100%;
+        max-width: 34rem;
+        text-align: left;
+      }
+
+      .kicker {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--signal);
+      }
+
+      .kicker::before {
+        content: '';
+        width: 1.75rem;
+        height: 1px;
+        background: var(--signal);
+        opacity: 0.7;
+      }
+
+      h1 {
+        margin-top: 1.25rem;
+        font-family: var(--font-name);
+        font-weight: 700;
+        line-height: 0.9;
+        letter-spacing: -0.03em;
+        font-size: clamp(4.5rem, 3rem + 14vw, 9rem);
+        color: transparent;
+        -webkit-text-stroke: 1.6px var(--outline);
+      }
+
+      .lede {
+        margin-top: 1.5rem;
+        font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
+        color: var(--text);
+        max-width: 30ch;
+      }
+
+      .sub {
+        margin-top: 0.75rem;
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        color: var(--text-3);
+        word-break: break-all;
+      }
+
+      .actions {
+        margin-top: 2.25rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: 46px;
+        padding: 0.8rem 1.5rem;
+        border-radius: 999px;
+        border: 1px solid var(--line-2);
+        color: var(--text);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: border-color 220ms ease, color 220ms ease, background 220ms ease;
+      }
+
+      .btn--primary {
+        background: var(--signal);
+        border-color: var(--signal);
+        color: #07080a;
+        font-weight: 600;
+      }
+
+      .btn:hover {
+        border-color: var(--signal);
+        color: var(--signal);
+      }
+
+      .btn--primary:hover {
+        background: transparent;
+        color: var(--signal);
+      }
+
+      .btn:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--signal) 45%, transparent);
+      }
+
+      footer {
+        margin-top: 3rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.25rem;
+        justify-content: space-between;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--text-3);
+      }
+
+      footer a {
+        color: var(--text-2);
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        color: var(--signal);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <p class="kicker">404 / route not found</p>
+
+      <h1>404</h1>
+
+      <p class="lede">This page never existed — or it was taken offline.</p>
+      <p class="sub">// the site is a single page: everything lives at /</p>
+
+      <div class="actions">
+        <a class="btn btn--primary" href="/">Back to home</a>
+        <a class="btn" href="/#projects">See projects</a>
+      </div>
+
+      <footer>
+        <span>© su6osec — offensive security &amp; cloud</span>
+        <span>
+          <a href="mailto:deepanshu.infosec@gmail.com">Email</a>
+          ·
+          <a href="https://github.com/su6osec">GitHub</a>
+        </span>
+      </footer>
+    </main>
+
+    <!--
+      CSP on this host allows inline styles but only hashed inline scripts, so
+      this page ships with no JavaScript of its own. An error page that needs
+      JS to render is a broken error page — everything above paints on first
+      byte.
+    -->
+  </body>
+</html>
